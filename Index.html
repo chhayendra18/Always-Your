@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message For You ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #ffe6e8;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(255, 75, 110, 0.2);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+        }
+        .gif-container img {
+            width: 150px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #ff3366;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            min-height: 50px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #yesBtn {
+            background: #ff3366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+        #noBtn {
+            background: #e0e0e0;
+            color: #666;
+            position: absolute;
+        }
+        .hidden-message {
+            display: none;
+        }
+        .hidden-message h2 {
+            color: #ff3366;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainCard">
+        <div class="gif-container">
+            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z2ZnRzcDd3eHR2eWZicXRhZmt2eWh6OHBxYTF5NmYyeWhxZ3YyeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L9543L40I4J4g/giphy.gif" alt="Sad Cat">
+        </div>
+        <div id="contentBlock">
+            <h1>I am so sorry... 🥺</h1>
+            <p>Vrushu Beta Yaar Thay Gy Bhual Pn Have Thi Bas TU Khush Thay Eva j Kam Karish Beta Ane Mast Rayshu Ne Jode Mari Vrushu 💋</p>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="acceptForgiveness()">Ha Darling❤️</button>
+                <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Na 😤</button>
+            </div>
+        </div>
+
+        <div id="successBlock" class="hidden-message">
+            <h2>I LOVE YOU VRUSHU BETA 🥰</h2>
+            <p>Promise, Beta aagad aavu kasu nay thay hone kem khbar, "Tumhare sang 🫂 jo bhi mila hai 🥺 ab ek pal bhi khona nahi hai muje 🧿❤️ tumhare sang rato main jag kar dekhu tumhe bas sona nahi hai muje 😁🫂"  ✨💖</p>
+        </div>
+    </div>
+
+    <script>
+        // No button mouse/touch movement logic
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        // Yes button click action
+        function acceptForgiveness() {
+            document.getElementById('contentBlock').style.display = 'none';
+            document.getElementById('successBlock').style.display = 'block';
+            document.getElementById('statusGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1a3BvNXlhNzFycWtlNHRseDR0cmhyYnJqOHFqdWRud3d3ejB5eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif";
+
+            // Heart Confetti effect
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff3366', '#ff6699', '#ff99bb']
+            });
+        }
+    </script>
+</body>
+</html>
